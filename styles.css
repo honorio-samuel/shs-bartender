@@ -428,3 +428,35 @@ footer p {
     font-size: 0.8rem;
     letter-spacing: 1px;
 }
+
+@media (max-width: 768px) {
+    /* 1. Ajusta o container do header para empilhar os elementos */
+    header .container {
+        flex-direction: column; 
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    /* 2. Reduz o espaçamento entre os itens do menu para não transbordar */
+    nav ul {
+        gap: 1rem; 
+        justify-content: center;
+        flex-wrap: wrap; /* Permite que o menu quebre em duas linhas se necessário */
+    }
+
+    nav a {
+        font-size: 0.8rem; /* Fonte levemente menor para mobile */
+    }
+
+    /* 3. Ajuste do Hero para telas pequenas (opcional, melhora a leitura) */
+    .hero h2 {
+        font-size: 2rem;
+        padding: 0 1rem;
+    }
+
+    /* 4. Ajuste dos campos do formulário para ocuparem a linha toda */
+    .input-group-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
