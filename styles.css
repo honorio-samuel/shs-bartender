@@ -1,0 +1,430 @@
+/* 1. VARIÁVEIS DE DESIGN */
+:root {
+    --bg-dark: #0f0f0f;
+    /* Fundo principal */
+    --bg-card: #1a1a1a;
+    /* Fundo dos cards e formulário */
+    --cor-gold: #d4af37;
+    /* Dourado para detalhes e botões */
+    --cor-text: #ffffff;
+    /* Texto principal */
+    --cor-text-muted: #a0a0a0;
+    /* Textos secundários (ingredientes) */
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+/* 2. RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    /* Deixa o deslizar do menu suave */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--cor-text);
+    font-family: var(--font-primary);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+header {
+    background-color: rgba(15, 15, 15, 0.95);
+    padding: 1rem 0;
+    position: fixed;
+    /* Fixa o topo ao rolar a página */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+h1 span {
+    color: var(--cor-gold);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--cor-text);
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--cor-gold);
+}
+
+.hero {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    /* Escurece o slideshow */
+    position: relative;
+    /* Importante para posicionar o slideshow */
+    margin-top: 60px;
+    /* Compensa o header fixo */
+    overflow: hidden;
+    /* Garante que o slideshow não cause scroll desnecessário */
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para o Slideshow de Fundo */
+.slideshow-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Garante que as imagens não transbordem */
+    z-index: -1;
+    /* Fica atrás do conteúdo */
+}
+
+.slideshow-background img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Preenche o espaço, cortando as bordas */
+    opacity: 0;
+    /* Esconde todas as imagens por padrão */
+    transition: opacity 1.5s ease-in-out;
+    /* Transição suave */
+}
+
+.slideshow-background img.active {
+    opacity: 1;
+    /* A imagem ativa fica visível */
+}
+
+.btn-cta {
+    display: inline-block;
+    background-color: var(--cor-gold);
+    color: #000;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    transition: 0.3s transform;
+}
+
+.btn-cta:hover {
+    transform: scale(1.05);
+}
+
+.grid-drinks {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.drink-card {
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+    border: 1px solid #333;
+}
+
+.drink-card:hover {
+    border-color: var(--cor-gold);
+}
+
+.drink-image img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* Todas as fotos terão a mesma proporção */
+    object-fit: cover;
+    /* Corta o excesso sem esticar */
+}
+
+.drink-info {
+    padding: 1.5rem;
+}
+
+.categoria-tag {
+    font-size: 0.7rem;
+    color: var(--cor-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ingredientes {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: var(--cor-text-muted);
+    border-top: 1px solid #333;
+    padding-top: 0.5rem;
+}
+
+#orcamento {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, var(--bg-dark), #151515);
+}
+
+#form-orcamento {
+    background-color: var(--bg-card);
+    padding: 3rem;
+    border-radius: 15px;
+    border: 1px solid #333;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 2rem;
+}
+
+legend {
+    color: var(--cor-gold);
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.input-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--cor-text-muted);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="email"],
+input[type="tel"],
+select {
+    background-color: #222;
+    border: 1px solid #444;
+    padding: 0.8rem;
+    color: white;
+    border-radius: 5px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--cor-gold);
+}
+
+/* Estilização dos Checkboxes */
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    background: #222;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--cor-text);
+    cursor: pointer;
+}
+
+/* Box de Insumos e Resultado */
+.info-insumos {
+    background-color: rgba(212, 175, 55, 0.1);
+    border-left: 4px solid var(--cor-gold);
+    padding: 1rem;
+    margin: 2rem 0;
+    font-size: 0.9rem;
+}
+
+#resultado-preview {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-top: 1px solid #333;
+}
+
+#valor-total {
+    color: var(--cor-gold);
+    font-weight: bold;
+}
+
+.modal {
+    display: none;
+    /* Escondido inicialmente */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Fundo escurecido */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--bg-card);
+    padding: 3rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid var(--cor-gold);
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--cor-text-muted);
+}
+
+.close-button:hover {
+    color: var(--cor-gold);
+}
+
+#contato {
+    background-color: var(--bg-card);
+    /* Mesma cor dos cards para manter a harmonia */
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 50px;
+    /* Espaçamento do conteúdo acima */
+    border: 1px solid #333;
+}
+
+#contato h3 {
+    color: var(--cor-gold);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+#contato p {
+    color: var(--cor-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-links a {
+    display: inline-block;
+    /* Para garantir que o ícone se comporte bem */
+    width: 40px;
+    /* Tamanho dos ícones */
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    /* Efeito ao passar o mouse */
+}
+
+.social-links img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Garante que o ícone não seja cortado */
+    filter: grayscale(100%) brightness(150%);
+    /* Deixa o ícone cinza claro */
+    transition: filter 0.3s ease;
+}
+
+.social-links a:hover img {
+    filter: grayscale(0%) brightness(100%);
+    /* Cor original ao passar o mouse */
+}
+
+.email-contato a {
+    color: var(--cor-gold);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-contato a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para Contato */
+@media (max-width: 768px) {
+    #contato {
+        padding: 2rem 1rem;
+    }
+
+    #contato h3 {
+        font-size: 1.5rem;
+    }
+}
+
+footer {
+    padding: 4rem 0 2rem;
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 50px;
+}
+
+footer p {
+    color: var(--cor-text-muted);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}

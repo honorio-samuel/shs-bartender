@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHS | Coquetelaria para Eventos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Bartender<span>.SHS</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#orcamento">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="slideshow-background">
+                <img src="assets/hero-bg-1.jpg" alt="Background 1" class="active">
+                <img src="assets/hero-bg-2.jpg" alt="Background 2">
+                <img src="assets/hero-bg-3.jpg" alt="Background 3">
+            </div>
+            <div class="hero-content reveal visible">
+                <h2>Experiências Únicas em cada Gole</h2>
+                <p>Sofisticação e sabor para o seu evento.</p>
+                <a href="#orcamento" class="btn-cta">Solicitar Orçamento</a>
+            </div>
+        </section>
+
+        <section id="cardapio" class="container reveal">
+            <h3>Nossos Drinks Destaques</h3>
+            <div class="grid-drinks">
+
+                <article class="drink-card reveal">
+                    <div class="drink-image">
+                        <img src="assets/GinTonica.jpeg" alt="Gin Tônica">
+                        <span class="categoria-tag"> - Clássico
+                        </span>
+                    </div>
+                    <div class="drink-info">
+                        <h4>Gin Tônica Premium</h4>
+                        <p>Um clássico refrescante com botânicos selecionados.</p>
+                        <div class="ingredientes">
+                            <strong>Ingredientes:</strong> Gin, água tônica, limão siciliano e alecrim.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drink-card reveal">
+                    <div class="drink-image">
+                        <img src="assets/Negroni.jpg" alt="Negroni">
+                        <span class="categoria-tag"> - Intenso
+                        </span>
+                    </div>
+                    <div class="drink-info">
+                        <h4>Negroni</h4>
+                        <p>O equilíbrio perfeito entre o amargo e o doce.</p>
+                        <div class="ingredientes">
+                            <strong>Ingredientes:</strong> Gin, Vermute tinto, Campari e laranja.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drink-card reveal">
+                    <div class="drink-image">
+                        <img src="assets/Caip.jpg" alt="Caipirinha">
+                        <span class="categoria-tag"> - Nacional
+                        </span>
+                    </div>
+                    <div class="drink-info">
+                        <h4>Caipirinhas & Caipvodkas</h4>
+                        <p>Doce e cítrico para agradar nosso paladar brasileiro!</p>
+                        <div class="ingredientes">
+                            <strong>Ingredientes:</strong> Cachaça/Vodka, frutas da estação e açúcar.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drink-card reveal">
+                    <div class="drink-image">
+                        <img src="assets/AperolSpritz.jpg" alt="Aperol Spritz">
+                        <span class="categoria-tag"> - Refrescante
+                        </span>
+                    </div>
+                    <div class="drink-info">
+                        <h4>Aperol Spritz</h4>
+                        <p>Toque leve e refrescante junto ao cítrico, a cara do verão.</p>
+                        <div class="ingredientes">
+                            <strong>Ingredientes:</strong> Aperol, Prosecco, água gaseificada e laranja.
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drink-card reveal">
+                    <div class="drink-image">
+                        <img src="assets/MoscowMule.jpg" alt="Moscow Mule">
+                        <span class="categoria-tag"> - Populares
+                        </span>
+                    </div>
+                    <div class="drink-info">
+                        <h4>Moscow Mule</h4>
+                        <p>O famoso drink da caneca de cobre e espuma de gengibre.</p>
+                        <div class="ingredientes">
+                            <strong>Ingredientes:</strong> Vodka, limão, xarope de açúcar e espuma de gengibre.
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="orcamento" class="container reveal">
+            <h2>Simulador de Orçamento</h2>
+            <br>
+            <form id="form-orcamento">
+
+                <fieldset>
+                    <legend>Logística do Evento</legend>
+                    <div class="input-group-row">
+                        <div class="input-field">
+                            <label for="data-evento">Data da Festa:</label>
+                            <input type="date" id="data-evento" name="data-evento" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="tipo-evento">Tipo de Evento:</label>
+                            <select id="tipo-evento" name="tipo-evento" required>
+                                <option value="">Selecione...</option>
+                                <option value="1.0">Aniversário</option>
+                                <option value="1.2">Casamento</option>
+                                <option value="1.5">Corporativo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-group-row">
+                        <div class="input-field">
+                            <label for="hora-inicio">Início:</label>
+                            <input type="time" id="hora-inicio" name="hora-inicio" required>
+                        </div>
+                        <div class="input-field">
+                            <label for="hora-fim">Término:</label>
+                            <input type="time" id="hora-fim" name="hora-fim" required>
+                        </div>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="convidados">Quantidade de Convidados:</label>
+                        <input type="number" id="convidados" name="convidados" min="10" placeholder="Ex: 50" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Escolha seu Menu</legend>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="drinks" value="gin"> Gin Tônica</label>
+                        <label><input type="checkbox" name="drinks" value="negroni"> Negroni</label>
+                        <label><input type="checkbox" name="drinks" value="caipirinha"> Caipirinhas</label>
+                        <label><input type="checkbox" name="drinks" value="aperol"> Aperol Spritz</label>
+                        <label><input type="checkbox" name="drinks" value="moscow"> Moscow Mule</label>
+                    </div>
+                </fieldset>
+
+                <div class="info-insumos">
+                    <p><strong>💡 Nota:</strong> Nosso serviço foca na hospitalidade e mão de obra. Forneceremos a lista
+                        de insumos exata para sua compra, garantindo qualidade e economia.</p>
+                </div>
+
+                <div id="resultado-preview">
+                    <p>Estimativa de Serviço: <span id="valor-total">R$ 0,00</span></p>
+                </div>
+
+                <button type="submit" class="btn-cta" style="width: 100%; border: none; cursor: pointer;">Finalizar
+                    Solicitação</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Identificação</h3>
+            <p>Preencha os dados para receber o orçamento detalhado.</p>
+            <form id="form-login">
+                <div class="input-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">WhatsApp:</label>
+                    <input type="tel" id="telefone" required>
+                </div>
+                <button type="submit" class="btn-enviar"
+                    style="margin-top: 1rem; width: 100%; background: var(--cor-gold); padding: 10px; border: none; font-weight: bold; cursor: pointer;">Enviar
+                    Orçamento</button>
+            </form>
+        </div>
+    </div>
+
+    <section id="contato" class="container reveal">
+        <div class="contato-content">
+            <h3>Fale Conosco</h3>
+            <p>Conecte-se e saiba mais sobre nossos serviços:</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/sam.hsilva" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="assets/instagram-icon.jpg" alt="Instagram">
+                </a>
+                <a href="https://github.com/honorio-samuel" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <img src="assets/github-icon.png" alt="GitHub">
+                </a>
+            </div>
+            <p class="email-contato">Ou envie um e-mail: <a
+                    href="mailto:seu.email@exemplo.com">honorio.sams@gmail.com</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 SHS Bartender - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
