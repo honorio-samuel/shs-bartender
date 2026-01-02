@@ -1,0 +1,347 @@
+/* --- BUSCA E FILTROS --- */
+.filtros-loja {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#input-busca {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.8rem 1.5rem;
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 30px;
+    outline: none;
+}
+
+.btn-filtro {
+    background: transparent;
+    border: 1px solid var(--cor-gold);
+    color: var(--cor-gold);
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.btn-filtro.active { background: var(--cor-gold); color: #000; }
+
+/* --- VITRINE E CARDS --- */
+.grid-loja {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+.produto-card {
+    background: #161616;
+    border: 1px solid #333;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.descricao-curta {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin: 10px 0;
+    line-height: 1.4;
+    min-height: 60px;
+    
+    /* Configuração para truncar o texto */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Versão para Chrome/Safari/Edge */
+    line-clamp: 3;         /* Versão padrão (resolve o alerta) */
+    
+    overflow: hidden;
+}
+
+.produto-card:hover { border-color: var(--cor-gold); }
+
+.img-vitrine {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+}
+
+.thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.thumbnails img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #444;
+    border-radius: 4px;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+}
+
+.thumbnails img:hover { border-color: var(--cor-gold); }
+
+
+
+.preco-loja {
+    color: var(--cor-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.btn-comprar {
+    background-color: var(--cor-gold);
+    color: #000;                /* Texto preto para contraste no botão dourado */
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;                /* Faz o botão ocupar a largura do card */
+    transition: 0.3s;
+}
+
+.btn-comprar:hover {
+    background-color: #c5a02c; /* Dourado levemente mais escuro ao passar o mouse */
+}
+
+/* --- CARRINHO SIDEBAR --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 350px;
+    height: 100vh;
+    background: #111;
+    z-index: 3000;
+    transition: 0.5s;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.open { right: 0; }
+
+.cart-icon-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--cor-gold);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2000;
+    color: #000;
+}
+
+/* Este é o círculo preto com número dourado */
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #000;      
+    color: var(--cor-gold);     
+    font-size: 0.8rem;
+    font-weight: bold;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #111;
+}
+
+/* Ajuste do Cabeçalho do Carrinho */
+.cart-header {
+    display: flex;
+    justify-content: space-between; /* Empurra o texto para a esquerda e o X para a direita */
+    align-items: center;           /* Alinha verticalmente no centro */
+    border-bottom: 1px solid #333;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cart-header h3 {
+    margin: 0; /* Remove margens que podem empurrar o X para baixo */
+    font-size: 1.4rem;
+    color: white;
+}
+
+.cart-footer {
+    border-top: 1px solid #333; /* Isso substitui o <hr> com muito mais estilo */
+    padding-top: 20px;          /* Isso substitui o <br> com controle total */
+    margin-top: auto;           /* Empurra o rodapé do carrinho sempre para o fundo */
+}
+
+.cart-footer p {
+    margin-bottom: 15px;        /* Espaço entre o total e o botão */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Ajuste do botão fechar (X) */
+.close-cart {
+    font-size: 2.5rem;       /* Aumenta o tamanho visual */
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--cor-text-muted);
+    line-height: 1;          /* Garante que o tamanho da linha não empurre o elemento */
+    padding: 10px;           /* Aumenta a área de clique */
+    transition: 0.3s;
+    display: flex;           /* Ajuda no alinhamento interno */
+    align-items: center;
+    justify-content: center;
+}
+
+.close-cart:hover {
+    color: var(--cor-gold);
+    transform: rotate(90deg); /* Um detalhe visual moderno ao passar o mouse */
+}
+
+
+/* Overlay que cobre todo o site */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95); /* Fundo quase preto para foco total */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Fica acima de tudo, inclusive do carrinho */
+}
+
+/* Caixa do Pop-up */
+.modal-content {
+    background: #111;
+    padding: 3rem;
+    border: 1px solid var(--cor-gold);
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    color: white;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Estilo do botão "Não" */
+.btn-negativo {
+    background: transparent;
+    border: 1px solid #555;
+    color: #888;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    flex: 1;
+}
+
+.btn-negativo:hover {
+    background: #333;
+}
+
+.parceiro-banner-container {
+    background: linear-gradient(90deg, #111 0%, #1a1a1a 100%);
+    border-left: 4px solid #00703c; /* Verde característico da Tanqueray */
+    margin: 2rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.parceiro-banner-content {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.parceiro-texto { flex: 2; }
+
+.tag-parceria {
+    color: #00703c;
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.parceiro-texto h2 {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.parceiro-texto p {
+    color: #aaa;
+    font-size: 0.95rem;
+    max-width: 500px;
+}
+
+.btn-parceiro {
+    display: inline-block;
+    margin-top: 15px;
+    color: #00703c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #00703c;
+    transition: 0.3s;
+}
+
+.btn-parceiro:hover { color: white; border-color: white; }
+
+/* Container da imagem: controlamos o espaço que ela ocupa */
+.parceiro-img {
+    flex: 1.2;            /* Aumentamos levemente a proporção em relação ao texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;     /* Garante que ela não fique minúscula em telas médias */
+}
+
+/* A imagem propriamente dita */
+.parceiro-img img {
+    width: 100%;          /* Ela vai ocupar o espaço disponível no container acima */
+    max-width: 350px;     /* Limite para ela não "dominar" o banner em telas grandes */
+    height: auto;         /* Mantém a proporção original da foto */
+    
+    /* Borda circular suave nos cantos */
+    border-radius: 15px;  
+    
+    /* Ajuste visual */
+    object-fit: cover;    
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra para dar profundidade */
+}
+
+/* Ajuste no texto para ele não ficar espremido */
+.parceiro-texto {
+    flex: 2;              /* O texto ainda tem o dobro do espaço da imagem */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .parceiro-banner-content { flex-direction: column; text-align: center; }
+    .parceiro-img img { height: 120px; }
+}

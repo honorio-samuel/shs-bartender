@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Samuel Honório da Silva">
+    <title>Bartender.SHS | Eventos, Kits de Drinks Premium e Insumos Artesanais</title>
+    <meta name="description"
+        content="Leve a experiência do bar para sua casa. Kits completos de Moscow Mule, Gin Tônica e xaropes artesanais.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loja.css">
+</head>
+
+<body>
+    <div id="modal-idade" class="modal-overlay">
+        <div class="modal-content">
+            <h2 style="font-family: 'Playfair Display', serif;">Bartender<span>.SHS</span></h2>
+            <hr style="border: 0; border-top: 1px solid var(--cor-gold); margin: 20px 0;">
+            <p>Este site contém bebidas alcoólicas para venda. <br> Você tem mais de 18 anos?</p>
+            <div class="modal-buttons">
+                <button onclick="confirmarIdade(true)" class="btn-comprar">Sim, tenho 18+</button>
+                <button onclick="confirmarIdade(false)" class="btn-negativo">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-politicas" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 600px; text-align: left;">
+            <h3 style="color: var(--cor-gold); margin-bottom: 15px;">Trocas e Devoluções</h3>
+            <div
+                style="font-size: 0.9rem; line-height: 1.6; color: #ccc; max-height: 300px; overflow-y: auto; padding-right: 10px;">
+                <p><strong>1. Avarias no Transporte:</strong> Como nossos kits contêm garrafas de vidro, caso receba
+                    algo quebrado, envie uma foto para nosso email na sessão Contatos em até 24h para reposição
+                    gratuita.</p>
+                <br>
+                <p><strong>2. Arrependimento:</strong> O prazo é de 7 dias após o recebimento. O reembolso só será
+                    efetuado se o produto for devolvido com <strong>lacre intacto</strong>. Insumos abertos não podem
+                    ser devolvidos por questões de segurança alimentar.</p>
+                <br>
+                <p><strong>3. Qualidade:</strong> Nossos insumos (xaropes/shrubs) são artesanais. Se notar qualquer
+                    alteração no padrão de cor ou cheiro no momento da abertura, entre em contato imediatamente.</p>
+            </div>
+            <button onclick="fecharPoliticas()" class="btn-comprar"
+                style="margin-top: 20px; width: 100%;">Entendido</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <a href="index.html" style="text-decoration: none; color: inherit;">
+                <h1>Bartender<span>.SHS</span></h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="loja.html" class="active">Loja</a></li>
+                    <li><a href="index.html#cardapio">Cardapio</a></li>
+                    <li><a href="index.html#orcamento">Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 100px;">
+        <section class="filtros-loja">
+            <div class="search-box">
+                <input type="text" id="input-busca" placeholder="Buscar kit, xarope ou shrub...">
+            </div>
+            <div class="categorias">
+                <button class="btn-filtro active" onclick="filtrar('todos', event)">Todos</button>
+                <button class="btn-filtro" onclick="filtrar('kits', event)">Kits</button>
+                <button class="btn-filtro" onclick="filtrar('xaropes', event)">Xaropes</button>
+            </div>
+        </section>
+
+        <section class="parceiro-banner-container">
+            <div class="parceiro-banner-content">
+                <div class="parceiro-texto">
+                    <span class="tag-parceria">"Parceiro Oficial"</span>
+                    <h2>Eleve seu drink com <span>Ketel One</span></h2>
+                    <p>Ketel One Um sabor fresco e suave com um toque cítrico e final prolongado.</p>
+                    <a href="#vitrine" class="btn-parceiro">Ver Kits com Vodka</a>
+                </div>
+                <div class="parceiro-img">
+                    <img src="assets/KetelOne.jpg" alt="Ketel One Vodka">
+                </div>
+            </div>
+        </section>
+
+        <section id="vitrine" class="grid-loja">
+        </section>
+    </main>
+
+    <div id="carrinho-lateral" class="cart-sidebar">
+        <div class="cart-header">
+            <h3>Meu Carrinho</h3>
+            <span class="close-cart" onclick="toggleCarrinho()">&times;</span>
+        </div>
+        <div id="itens-carrinho">
+            <p style="text-align:center; color: #888; margin-top: 20px;">Carrinho vazio.</p>
+        </div>
+        <div class="cart-footer">
+            <p>Total: <span id="cart-total">R$ 0,00</span></p>
+            <button class="btn-cta" onclick="irParaCheckout()">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <div class="cart-icon-float" onclick="toggleCarrinho()">
+        <span>🛒</span>
+        <span id="cart-count">0</span>
+    </div>
+
+    <section id="contato" class="container reveal">
+        <div class="contato-content">
+            <h3>Fale Conosco</h3>
+            <p>Conecte-se e saiba mais sobre nossos serviços:</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/sam.hsilva" target="_blank" rel="noopener noreferrer"
+                    aria-label="Instagram">
+                    <img src="assets/instagram-icon.jpg" alt="Instagram">
+                </a>
+                <a href="https://github.com/honorio-samuel" target="_blank" rel="noopener noreferrer"
+                    aria-label="GitHub">
+                    <img src="assets/github-icon.png" alt="GitHub">
+                </a>
+                <a href="https://wa.me/5532991263807?text=Olá%20Bartender!%20Gostaria%20de%20pedir%20um%20kit."
+                    target="_blank" class="whatsapp-link">
+                    <img src="assets/logo-whatsapp.png" alt="Logo Bartender.SHS" class="mini-logo">
+
+                </a>
+            </div>
+            <p class="email-contato">Ou envie um e-mail: <a
+                    href="mailto:seu.email@exemplo.com">honorio.sams@gmail.com</a></p>
+        </div>
+    </section>
+
+    <div id="modal-pagamento" class="modal-overlay" style="display: none;">
+        <div class="modal-content" style="max-width: 500px; text-align: left;">
+            <h3 style="color: var(--cor-gold);">Finalizar Compra</h3>
+            <div id="resumo-itens"
+                style="margin: 15px 0; font-size: 0.9rem; border-bottom: 1px solid #333; padding-bottom: 10px;"></div>
+
+            <div style="margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px;">
+                <h4 style="margin-bottom: 10px; color: var(--cor-gold);">Dados de Entrega & Cadastro</h4>
+                <input type="text" id="nome-cliente" placeholder="Nome Completo"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: #222; border: 1px solid #444; color: white;"
+                    required>
+                <input type="email" id="email-cliente" placeholder="Seu melhor e-mail"
+                    style="width: 100%; padding: 10px; margin-bottom: 10px; background: #222; border: 1px solid #444; color: white;"
+                    required>
+
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="cep-input" placeholder="CEP (00000-000)"
+                        style="flex: 1; padding: 10px; background: #222; border: 1px solid #444; color: white;">
+                    <button onclick="calcularFrete()" class="btn-filtro" style="margin: 0; padding: 5px 15px;">Calcular
+                        Frete</button>
+                </div>
+                <small id="frete-resultado" style="color: var(--cor-gold); display: block; margin-top: 5px;"></small>
+            </div>
+
+            <p><strong>Total: R$ <span id="total-checkout">0.00</span></strong></p>
+            <small id="info-parcelas" style="color: var(--cor-gold);"></small>
+
+            <h4 style="margin-top: 20px;">Forma de Pagamento</h4>
+            <select id="metodo-pagamento"
+                style="width: 100%; padding: 10px; margin-top: 5px; background: #222; color: white; border: 1px solid #444;">
+                <option value="pix">PIX (5% de desconto)</option>
+                <option value="cartao">Cartão de Crédito (até 3x)</option>
+                <option value="boleto">Boleto Bancário</option>
+            </select>
+
+            <div
+                style="margin-top: 20px; font-size: 0.75rem; color: #888; display: flex; align-items: center; gap: 10px;">
+                <span title="Ambiente Seguro">🔒</span>
+                <p>Ambiente seguro com criptografia SSL 256 bits. Seus dados financeiros não são armazenados.</p>
+            </div>
+
+            <div class="modal-buttons" style="margin-top: 20px;">
+                <button onclick="processarPagamento(event)" class="btn-comprar" style="flex: 2;">Confirmar
+                    Pagamento</button>
+                <button onclick="document.getElementById('modal-pagamento').style.display='none'" class="btn-negativo"
+                    style="flex: 1;">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 SHS Bartender - Todos os direitos reservados.</p>
+        <li><a href="javascript:void(0)" onclick="abrirPoliticas()">Trocas e Devoluções</a></li>
+    </footer>
+
+    <script src="loja.js"></script>
+</body>
+
+</html>
